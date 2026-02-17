@@ -2321,3 +2321,201 @@ body {
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   }
 }
+
+/* ============================================================================
+   QUIZ TYPE SELECTION
+   ============================================================================ */
+.quiz-type-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+.quiz-type-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 24px 16px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
+}
+.quiz-type-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+.quiz-type-icon {
+  font-family: var(--jp-font);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: var(--primary-light);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.quiz-type-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text);
+}
+.quiz-type-desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* ============================================================================
+   PARTICLE SECTION
+   ============================================================================ */
+.particle-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin-bottom: 16px;
+}
+.particle-card-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 12px;
+}
+.particle-big-char {
+  font-family: var(--jp-font);
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--primary);
+  background: var(--primary-light);
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.particle-card-header h4 {
+  font-size: 1.1rem;
+  color: var(--text);
+}
+.particle-card-header .function {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+.particle-examples {
+  display: grid;
+  gap: 8px;
+  margin-top: 12px;
+}
+.particle-example {
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--primary);
+}
+.particle-example .jp {
+  font-family: var(--jp-font);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.particle-example .rm {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.particle-example .en {
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+.particle-mistake {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--accent-light);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: #92400e;
+}
+
+/* ============================================================================
+   CONJUGATION SECTION
+   ============================================================================ */
+.conj-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.conj-form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.conj-form-header:hover {
+  background: #f8fafc;
+}
+.conj-form-name {
+  font-family: var(--jp-font);
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--primary);
+}
+.conj-form-desc {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 2px;
+}
+.conj-form-body {
+  padding: 0 20px 20px;
+}
+.conj-group {
+  margin-bottom: 16px;
+}
+.conj-group h5 {
+  font-size: 0.9rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.conj-rule {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 8px;
+}
+.conj-example-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 0.9rem;
+}
+.conj-example-row span:first-child {
+  font-family: var(--jp-font);
+}
+.conj-example-row span:nth-child(2) {
+  font-family: var(--jp-font);
+  color: var(--primary);
+  font-weight: 500;
+}
+.conj-example-row span:last-child {
+  color: var(--text-light);
+}
+@media (max-width: 600px) {
+  .conj-example-row {
+    grid-template-columns: 1fr 1fr;
+  }
+  .conj-example-row span:last-child {
+    grid-column: 1 / -1;
+    font-size: 0.8rem;
+  }
+}

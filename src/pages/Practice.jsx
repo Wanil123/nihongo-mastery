@@ -235,7 +235,17 @@ export default function Practice() {
   const handlePick = (opt) => {
     if (picked !== null) return;
     setPicked(opt);
-    if (opt === questions[current].answer) setScore(s => s + 1);
+    if (opt === questions[current].answer) {
+      setScore(s => s + 1);
+    } else {
+      // Re-insert wrong question at a random later position
+      setQuestions(prev => {
+        const newQ = [...prev];
+        const insertPos = current + 2 + Math.floor(Math.random() * Math.min(3, newQ.length - current));
+        newQ.splice(insertPos, 0, prev[current]);
+        return newQ;
+      });
+    }
     setShowNext(true);
   };
 
@@ -322,6 +332,11 @@ export default function Practice() {
           </div>
           {showNext && (
             <div style={{ textAlign: 'center' }}>
+              {picked !== q.answer && (
+                <div style={{ color: '#ef4444', fontSize: '0.9rem', marginBottom: 8 }}>
+                  Correct answer: <strong>{q.answer}</strong> — This question will appear again!
+                </div>
+              )}
               <button className="btn btn-next" onClick={handleNext}>
                 {current + 1 >= questions.length ? 'See results' : 'Next question →'}
               </button>

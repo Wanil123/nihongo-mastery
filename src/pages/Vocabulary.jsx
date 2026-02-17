@@ -123,6 +123,7 @@ export default function Vocabulary() {
               <table className="vocab-table">
                 <thead>
                   <tr>
+                    {cat.words.some(w => w.emoji) && <th style={{ width: 40 }}></th>}
                     <th>Japanese</th>
                     <th>Romaji</th>
                     <th>English</th>
@@ -132,6 +133,9 @@ export default function Vocabulary() {
                 <tbody>
                   {cat.words.map((w, i) => (
                     <tr key={i}>
+                      {cat.words.some(w2 => w2.emoji) && (
+                        <td style={{ fontSize: '1.3rem', textAlign: 'center', padding: '4px' }}>{w.emoji || ''}</td>
+                      )}
                       <td className="jp-col">{w.jp}</td>
                       <td className="rm-col">{w.rm}</td>
                       <td>{w.fr}</td>

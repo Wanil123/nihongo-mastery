@@ -18,23 +18,37 @@ const modules = [
   {
     icon: "文",
     title: "Grammar 文法",
-    desc: "Sentence structure, particles, verbs, adjectives, te-form, and essential expressions.",
+    desc: "Sentence structure, particles, verbs, adjectives, te-form, and essential expressions based on Minna no Nihongo.",
     path: "/grammar",
+    level: "Beginner → Intermediate"
+  },
+  {
+    icon: "変",
+    title: "Conjugation 活用",
+    desc: "All verb conjugation forms: te-form, nai-form, potential, volitional, passive, causative, and more with quizzes.",
+    path: "/conjugation",
+    level: "Beginner → Intermediate"
+  },
+  {
+    icon: "は",
+    title: "Particles 助詞",
+    desc: "Master は, が, を, に, で, and all essential particles with explanations and practice quizzes.",
+    path: "/particles",
     level: "Beginner → Intermediate"
   },
   {
     icon: "言",
     title: "Vocabulary 語彙",
-    desc: "Over 400 essential words organized by theme: family, food, places, nature, and more.",
+    desc: "Over 400 essential words organized by theme with emoji icons, flashcards, and lesson-based vocab.",
     path: "/vocabulary",
     level: "Beginner"
   },
   {
     icon: "漢",
     title: "Kanji 漢字",
-    desc: "50+ essential kanji (JLPT N5) with visual explanations, readings, and words.",
+    desc: "120+ kanji (JLPT N5 & N4) with visual explanations, readings, words, and challenging quizzes.",
     path: "/kanji",
-    level: "Beginner"
+    level: "Beginner → Intermediate"
   },
   {
     icon: "話",

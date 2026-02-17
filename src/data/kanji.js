@@ -608,32 +608,80 @@ export const kanjiList = [
   }
 ];
 
+// Helper to pick N random unique items from array, excluding one value
+function pickRandom(arr, n, exclude) {
+  const filtered = arr.filter(x => x !== exclude);
+  const result = [];
+  const copy = [...filtered];
+  for (let i = 0; i < Math.min(n, copy.length); i++) {
+    const j = Math.floor(Math.random() * copy.length);
+    result.push(copy.splice(j, 1)[0]);
+  }
+  return result;
+}
+
+// Generate meaning quiz questions from ALL kanji
+export function generateKanjiMeaningQuiz(list = kanjiList) {
+  const allMeanings = list.map(k => k.meaning);
+  return list.map(k => {
+    const wrongs = pickRandom(allMeanings, 3, k.meaning);
+    return {
+      kanji: k.kanji,
+      answer: k.meaning,
+      options: [k.meaning, ...wrongs],
+      instruction: 'What is the meaning of this kanji?'
+    };
+  });
+}
+
+// Generate reading quiz from kanji words
+export function generateKanjiReadingQuiz(list = kanjiList) {
+  const allWords = list.flatMap(k => k.words);
+  const allReadings = allWords.map(w => w.reading);
+  const questions = [];
+  for (const k of list) {
+    for (const w of k.words.slice(0, 2)) {
+      const wrongs = pickRandom(allReadings, 3, w.reading);
+      questions.push({
+        word: w.word,
+        answer: w.reading,
+        options: [w.reading, ...wrongs],
+        instruction: 'How do you read this word?'
+      });
+    }
+  }
+  return questions;
+}
+
+// Generate "which kanji" quiz - given meaning, pick the kanji
+export function generateKanjiRecognitionQuiz(list = kanjiList) {
+  const allKanji = list.map(k => k.kanji);
+  return list.map(k => {
+    const wrongs = pickRandom(allKanji, 3, k.kanji);
+    return {
+      word: k.meaning,
+      answer: k.kanji,
+      options: [k.kanji, ...wrongs],
+      instruction: 'Which kanji means this?'
+    };
+  });
+}
+
+// Pre-generated static exercises for backward compatibility
 export const kanjiExercises = [
   {
     type: "meaning",
-    title: "What is the meaning of this kanji?",
-    questions: [
-      { kanji: "山", answer: "mountain", options: ["mountain", "river", "forest", "sea"] },
-      { kanji: "人", answer: "person", options: ["tree", "person", "child", "woman"] },
-      { kanji: "大", answer: "big", options: ["small", "medium", "big", "fat"] },
-      { kanji: "日", answer: "day/sun", options: ["moon", "star", "day/sun", "earth"] },
-      { kanji: "水", answer: "water", options: ["fire", "water", "earth", "wind"] },
-      { kanji: "本", answer: "book", options: ["pen", "book", "paper", "notebook"] },
-      { kanji: "食", answer: "to eat", options: ["to drink", "to eat", "to sleep", "to walk"] },
-      { kanji: "学", answer: "study", options: ["school", "study", "teacher", "class"] },
-      { kanji: "国", answer: "country", options: ["city", "house", "country", "neighborhood"] },
-      { kanji: "車", answer: "car", options: ["train", "bus", "car", "airplane"] }
-    ]
+    title: "Kanji → Meaning (all N5)",
+    questions: generateKanjiMeaningQuiz()
   },
   {
     type: "reading",
-    title: "How do you read this word?",
-    questions: [
-      { word: "日本", answer: "にほん", options: ["にほん", "にっぽん", "ひもと", "ひほん"] },
-      { word: "学校", answer: "がっこう", options: ["がっこう", "がくこう", "まなこう", "がこう"] },
-      { word: "先生", answer: "せんせい", options: ["せんせい", "さきお", "せんしょう", "さきせい"] },
-      { word: "大学", answer: "だいがく", options: ["だいがく", "おおがく", "たいがく", "おがく"] },
-      { word: "電車", answer: "でんしゃ", options: ["でんしゃ", "でんくるま", "いなずま", "でんしゃ"] }
-    ]
+    title: "Word → Reading (all N5)",
+    questions: generateKanjiReadingQuiz()
+  },
+  {
+    type: "recognition",
+    title: "Meaning → Kanji (all N5)",
+    questions: generateKanjiRecognitionQuiz()
   }
 ];

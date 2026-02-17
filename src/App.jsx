@@ -8,6 +8,8 @@ import Vocabulary from './pages/Vocabulary';
 import Kanji from './pages/Kanji';
 import Conversations from './pages/Conversations';
 import Practice from './pages/Practice';
+import Conjugation from './pages/Conjugation';
+import Particles from './pages/Particles';
 import './styles/App.css';
 
 const navItems = [
@@ -17,6 +19,8 @@ const navItems = [
   { path: '/katakana', label: 'Katakana カタカナ', icon: 'ア' },
   { section: 'Language' },
   { path: '/grammar', label: 'Grammar 文法', icon: '文' },
+  { path: '/conjugation', label: 'Conjugation 活用', icon: '変' },
+  { path: '/particles', label: 'Particles 助詞', icon: 'は' },
   { path: '/vocabulary', label: 'Vocabulary 語彙', icon: '言' },
   { path: '/kanji', label: 'Kanji 漢字', icon: '漢' },
   { section: 'Practice' },
@@ -117,6 +121,8 @@ export default function App() {
             <Route path="/grammar" element={<Grammar />} />
             <Route path="/vocabulary" element={<Vocabulary />} />
             <Route path="/kanji" element={<Kanji />} />
+            <Route path="/conjugation" element={<Conjugation />} />
+            <Route path="/particles" element={<Particles />} />
             <Route path="/practice" element={<Practice />} />
             <Route path="/conversations" element={<Conversations />} />
           </Routes>
