@@ -815,6 +815,15 @@ body {
   font-style: italic;
 }
 
+.vocab-img {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
 /* ============================================================================
    KANJI CARD
    ============================================================================ */
@@ -1771,6 +1780,11 @@ body {
   }
   .vocab-table .jp-col {
     font-size: 0.9rem;
+  }
+  .vocab-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
   }
 
   /* Kanji grid */

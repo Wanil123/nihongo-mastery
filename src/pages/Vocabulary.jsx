@@ -123,7 +123,7 @@ export default function Vocabulary() {
               <table className="vocab-table">
                 <thead>
                   <tr>
-                    {cat.words.some(w => w.emoji) && <th style={{ width: 40 }}></th>}
+                    {cat.words.some(w => w.emoji || w.img) && <th style={{ width: 50 }}></th>}
                     <th>Japanese</th>
                     <th>Romaji</th>
                     <th>English</th>
@@ -133,8 +133,14 @@ export default function Vocabulary() {
                 <tbody>
                   {cat.words.map((w, i) => (
                     <tr key={i}>
-                      {cat.words.some(w2 => w2.emoji) && (
-                        <td style={{ fontSize: '1.3rem', textAlign: 'center', padding: '4px' }}>{w.emoji || ''}</td>
+                      {cat.words.some(w2 => w2.emoji || w2.img) && (
+                        <td style={{ textAlign: 'center', padding: '4px' }}>
+                          {w.img ? (
+                            <img src={w.img} alt={w.fr} className="vocab-img" loading="lazy" />
+                          ) : (
+                            <span style={{ fontSize: '1.3rem' }}>{w.emoji || ''}</span>
+                          )}
+                        </td>
                       )}
                       <td className="jp-col">{w.jp}</td>
                       <td className="rm-col">{w.rm}</td>

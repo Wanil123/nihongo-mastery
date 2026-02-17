@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useRef } from 'react';
 
 function shuffle(arr) {
   const a = [...arr];
@@ -21,17 +21,30 @@ export default function Quiz({ questions, title }) {
   const [showNext, setShowNext] = useState(false);
   const [wrongCount, setWrongCount] = useState(0);
 
-  const q = queue[current];
+  const q = queue[current] || null;
+
+  // Shuffle options ONCE per question (use ref to avoid re-shuffling on re-render)
+  const lastQuestionRef = useRef(null);
+  const shuffledOptionsRef = useRef([]);
+  if (q && q !== lastQuestionRef.current) {
+    lastQuestionRef.current = q;
+    shuffledOptionsRef.current = shuffle(q.options);
+  }
+  const displayOptions = shuffledOptionsRef.current;
+
+  const progress = useMemo(() => {
+    if (queue.length === 0) return 0;
+    return Math.min(((current + 1) / queue.length) * 100, 100);
+  }, [current, queue.length]);
 
   const handleSelect = useCallback((option) => {
-    if (selected !== null) return;
+    if (selected !== null || !q) return;
     setSelected(option);
     setTotalAnswered(t => t + 1);
     if (option === q.answer) {
       setScore(s => s + 1);
     } else {
       setWrongCount(w => w + 1);
-      // Re-insert the question at a random position later in the queue
       setQueue(prev => {
         const newQueue = [...prev];
         const insertPos = current + 2 + Math.floor(Math.random() * Math.min(3, newQueue.length - current));
@@ -62,10 +75,11 @@ export default function Quiz({ questions, title }) {
     setFinished(false);
     setShowNext(false);
     setWrongCount(0);
+    lastQuestionRef.current = null;
   }, [questions]);
 
   if (finished) {
-    const pct = Math.round((score / totalAnswered) * 100);
+    const pct = totalAnswered > 0 ? Math.round((score / totalAnswered) * 100) : 0;
     let message = '';
     if (pct === 100) message = 'Perfect! すばらしい！ (Subarashii!) You are amazing!';
     else if (pct >= 80) message = 'Great job! よくできました！ (Yoku dekimashita!) Keep going!';
@@ -92,14 +106,6 @@ export default function Quiz({ questions, title }) {
   }
 
   if (!q) return null;
-
-  // Shuffle options for display
-  const displayOptions = useMemo(() => {
-    if (!q) return [];
-    return shuffle(q.options);
-  }, [q]);
-
-  const progress = questions.length > 0 ? Math.min(((current + 1) / queue.length) * 100, 100) : 0;
 
   return (
     <div className="quiz-container">
