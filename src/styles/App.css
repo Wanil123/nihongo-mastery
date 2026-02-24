@@ -600,7 +600,7 @@ body {
 }
 
 .quiz-question .question-char {
-  font-size: 5rem;
+  font-size: 3.2rem;
   font-family: var(--jp-font);
   font-weight: 900;
   color: var(--text);
@@ -666,7 +666,7 @@ body {
 }
 
 .quiz-result .score {
-  font-size: 3rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: var(--primary);
   margin-bottom: 8px;
@@ -1732,7 +1732,7 @@ body {
     padding: 18px;
   }
   .quiz-question .question-char {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
   }
   .quiz-options {
     grid-template-columns: 1fr;
@@ -2324,7 +2324,7 @@ body {
     font-size: 2.4rem;
   }
   .quiz-question .question-char {
-    font-size: 3rem;
+    font-size: 2.2rem;
   }
   .kanji-card .kanji-top {
     flex-direction: column;

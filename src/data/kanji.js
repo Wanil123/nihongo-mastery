@@ -667,6 +667,95 @@ export function generateKanjiRecognitionQuiz(list = kanjiList) {
   });
 }
 
+// Groups of similar-looking kanji for the confusion quiz
+export const similarKanjiGroups = [
+  // N5 groups
+  { kanji: ["人", "入", "八"], meanings: ["Person", "To enter", "Eight"], hint: "Pay attention to stroke angles!" },
+  { kanji: ["大", "木", "本"], meanings: ["Big", "Tree", "Book"], hint: "Count the strokes at the bottom!" },
+  { kanji: ["上", "下"], meanings: ["Above", "Below"], hint: "Which direction does the stroke point?" },
+  { kanji: ["日", "目", "白"], meanings: ["Day/Sun", "Eye", "White"], hint: "Look at the inner strokes!" },
+  { kanji: ["月", "円"], meanings: ["Moon/Month", "Circle/Yen"], hint: "Check the inner lines — horizontal vs angled!" },
+  { kanji: ["子", "字", "学"], meanings: ["Child", "Character", "Study"], hint: "子 appears inside the others!" },
+  { kanji: ["女", "姉", "妹", "妻"], meanings: ["Woman", "Older Sister", "Younger Sister", "Wife"], hint: "They all contain the 女 radical!" },
+  { kanji: ["土", "士", "十"], meanings: ["Earth", "Samurai/Scholar", "Ten"], hint: "Compare the length of horizontal strokes!" },
+  { kanji: ["千", "十", "百"], meanings: ["Thousand", "Ten", "Hundred"], hint: "Look at the top stroke and structure!" },
+  { kanji: ["山", "出"], meanings: ["Mountain", "To go out"], hint: "Count the peaks!" },
+  { kanji: ["火", "水"], meanings: ["Fire", "Water"], hint: "Fire points up, water flows down!" },
+  { kanji: ["食", "飲"], meanings: ["To eat", "To drink"], hint: "Look at the bottom radical!" },
+  { kanji: ["見", "聞"], meanings: ["To see", "To listen"], hint: "見 has 儿 at bottom, 聞 has 耳 inside 門!" },
+  { kanji: ["読", "話", "語"], meanings: ["To read", "To speak", "Language"], hint: "Check the left radical: 言 vs different right sides!" },
+  { kanji: ["行", "来"], meanings: ["To go", "To come"], hint: "Opposite meanings, different structures!" },
+  { kanji: ["先", "生"], meanings: ["Previous/Before", "Life/Born"], hint: "先 has 儿 at bottom, 生 has a different shape!" },
+  { kanji: ["年", "午"], meanings: ["Year", "Noon"], hint: "年 has more strokes on top!" },
+  // N4 groups
+  { kanji: ["持", "待"], meanings: ["Hold/Have", "Wait"], hint: "Left radical: 扌(hand) for hold, 彳(step) for wait!" },
+  { kanji: ["開", "閉", "問", "聞"], meanings: ["Open", "Close", "Question", "Listen"], hint: "All have 門 (gate) — check what's inside!" },
+  { kanji: ["始", "姉"], meanings: ["Begin", "Older Sister"], hint: "Both have 女 on the left — check the right side!" },
+  { kanji: ["売", "買", "読"], meanings: ["Sell", "Buy", "Read"], hint: "売 and 買 differ by top/bottom, 読 has 言!" },
+  { kanji: ["貸", "借"], meanings: ["Lend", "Borrow"], hint: "貸 has 貝 (shell/money), 借 has 亻(person)!" },
+  { kanji: ["住", "使"], meanings: ["Live/Reside", "Use"], hint: "Both start with 亻— check the right component!" },
+  { kanji: ["元", "兄"], meanings: ["Origin/Healthy", "Older Brother"], hint: "兄 has 口 on top, 元 has two horizontal strokes!" },
+  { kanji: ["友", "夫"], meanings: ["Friend", "Husband"], hint: "友 curves left, 夫 is more symmetrical!" },
+  { kanji: ["料", "理"], meanings: ["Fee/Material", "Reason/Logic"], hint: "Both have 里 — check the left radical: 米 vs 王!" },
+  { kanji: ["花", "茶", "菜", "英", "薬"], meanings: ["Flower", "Tea", "Vegetable", "English", "Medicine"], hint: "All share the 艹 (plant) radical on top!" },
+  { kanji: ["教", "習"], meanings: ["Teach", "Learn"], hint: "教 has 攵 on right, 習 has 羽 (wings) on top!" },
+  { kanji: ["試", "験"], meanings: ["Try/Test", "Examine"], hint: "Often used together as 試験 (exam)!" },
+  { kanji: ["赤", "走"], meanings: ["Red", "Run"], hint: "Both have 土 on top — check the bottom!" },
+  { kanji: ["止", "足"], meanings: ["Stop", "Foot/Leg"], hint: "止 is simpler, 足 builds on it with more strokes!" },
+  { kanji: ["切", "七"], meanings: ["Cut", "Seven"], hint: "切 has 刀 (sword) on the right!" },
+  { kanji: ["目", "耳", "口"], meanings: ["Eye", "Ear", "Mouth"], hint: "Body part kanji — different shapes for different senses!" },
+  { kanji: ["体", "休"], meanings: ["Body", "Rest"], hint: "Both have 亻— 体 has 本, 休 has 木!" },
+  { kanji: ["院", "病", "医"], meanings: ["Institution", "Illness", "Doctor"], hint: "Medical kanji — 院 has 阝, 病 has 疒, 医 has 匚!" },
+  { kanji: ["歩", "走", "止"], meanings: ["Walk", "Run", "Stop"], hint: "Movement kanji — 止 is inside 歩!" },
+  { kanji: ["映", "画"], meanings: ["Reflect/Project", "Picture"], hint: "Often together as 映画 (movie)!" },
+  { kanji: ["同", "向"], meanings: ["Same", "Direction/Toward"], hint: "Similar outer frames — check what's inside!" },
+  { kanji: ["黒", "白", "赤", "青"], meanings: ["Black", "White", "Red", "Blue"], hint: "Color kanji — each has a unique structure!" },
+];
+
+// Build a lookup from kanji char to meaning using both N5 and N4 lists
+function buildKanjiLookup(extraList) {
+  const lookup = {};
+  for (const k of kanjiList) lookup[k.kanji] = k.meaning;
+  if (extraList) {
+    for (const k of extraList) lookup[k.kanji] = k.meaning;
+  }
+  return lookup;
+}
+
+// Generate similar-looking kanji quiz
+export function generateSimilarKanjiQuiz(n4List = []) {
+  const lookup = buildKanjiLookup(n4List);
+  const questions = [];
+
+  for (const group of similarKanjiGroups) {
+    // Only include groups where all kanji exist in our data
+    const validKanji = group.kanji.filter(k => lookup[k]);
+    if (validKanji.length < 2) continue;
+
+    for (let i = 0; i < validKanji.length; i++) {
+      const correct = validKanji[i];
+      const correctMeaning = lookup[correct];
+      // Wrong options are the other kanji in the same group (they look similar!)
+      const wrongs = validKanji.filter(k => k !== correct);
+      // Pad with random kanji if group is small
+      while (wrongs.length < 3) {
+        const allKanjiChars = Object.keys(lookup).filter(k => k !== correct && !wrongs.includes(k));
+        if (allKanjiChars.length === 0) break;
+        wrongs.push(allKanjiChars[Math.floor(Math.random() * allKanjiChars.length)]);
+      }
+
+      questions.push({
+        word: correctMeaning,
+        answer: correct,
+        options: [correct, ...wrongs.slice(0, 3)],
+        instruction: `Pick the correct kanji (${group.hint})`
+      });
+    }
+  }
+
+  return questions;
+}
+
 // Pre-generated static exercises for backward compatibility
 export const kanjiExercises = [
   {

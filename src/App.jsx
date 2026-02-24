@@ -17,14 +17,14 @@ const navItems = [
   { section: 'Writing' },
   { path: '/hiragana', label: 'Hiragana ひらがな', icon: 'あ' },
   { path: '/katakana', label: 'Katakana カタカナ', icon: 'ア' },
+  { path: '/kanji', label: 'Kanji 漢字', icon: '漢' },
+  { path: '/practice', label: 'Kana Quiz 練習', icon: '✏' },
   { section: 'Language' },
   { path: '/grammar', label: 'Grammar 文法', icon: '文' },
   { path: '/conjugation', label: 'Conjugation 活用', icon: '変' },
   { path: '/particles', label: 'Particles 助詞', icon: 'は' },
   { path: '/vocabulary', label: 'Vocabulary 語彙', icon: '言' },
-  { path: '/kanji', label: 'Kanji 漢字', icon: '漢' },
   { section: 'Practice' },
-  { path: '/practice', label: 'Kana Quiz 練習', icon: '✏' },
   { path: '/conversations', label: 'Conversations 会話', icon: '話' },
 ];
 

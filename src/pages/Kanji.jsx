@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { kanjiIntro, kanjiList, generateKanjiMeaningQuiz, generateKanjiReadingQuiz, generateKanjiRecognitionQuiz } from '../data/kanji';
+import { kanjiIntro, kanjiList, generateKanjiMeaningQuiz, generateKanjiReadingQuiz, generateKanjiRecognitionQuiz, generateSimilarKanjiQuiz } from '../data/kanji';
 import { kanjiN4Intro, kanjiN4List } from '../data/kanji-n4';
 import Quiz from '../components/Quiz';
 
@@ -25,6 +25,7 @@ export default function Kanji() {
       case 'meaning': return generateKanjiMeaningQuiz(list);
       case 'reading': return generateKanjiReadingQuiz(list);
       case 'recognition': return generateKanjiRecognitionQuiz(list);
+      case 'similar': return generateSimilarKanjiQuiz(n4List);
       default: return null;
     }
   }, [quizType, quizLevel, n4List]);
@@ -140,6 +141,11 @@ export default function Kanji() {
                   <div className="quiz-type-title">Meaning → Kanji</div>
                   <div className="quiz-type-desc">See a meaning, choose the correct kanji</div>
                 </button>
+                <button className="quiz-type-card" onClick={() => setQuizType('similar')}>
+                  <div className="quiz-type-icon">似漢</div>
+                  <div className="quiz-type-title">Similar Kanji</div>
+                  <div className="quiz-type-desc">Distinguish between kanji that look alike</div>
+                </button>
               </div>
             </div>
           ) : (
@@ -156,6 +162,7 @@ export default function Kanji() {
                   questions={quizQuestions}
                   title={quizType === 'meaning' ? `Kanji → Meaning (${quizLevel.toUpperCase()})` :
                          quizType === 'reading' ? `Word → Reading (${quizLevel.toUpperCase()})` :
+                         quizType === 'similar' ? 'Similar-Looking Kanji (N5 & N4)' :
                          `Meaning → Kanji (${quizLevel.toUpperCase()})`}
                 />
               )}
