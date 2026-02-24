@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { conversations, usefulPhrases } from '../data/conversations';
-import SpeakButton from '../components/SpeakButton';
 
 export default function Conversations() {
   const [activeConv, setActiveConv] = useState(0);
@@ -58,7 +57,7 @@ function ConversationView({ conv }) {
           <div key={i} className={`dialogue-line ${line.speaker === 'You' ? 'you' : ''}`}>
             <div className="dialogue-speaker">{line.speaker}</div>
             <div className="dialogue-bubble">
-              <div className="jp">{line.jp} <SpeakButton text={line.jp} /></div>
+              <div className="jp">{line.jp}</div>
               <div className="rm">{line.rm}</div>
               <div className="fr">{line.fr}</div>
             </div>
@@ -82,7 +81,7 @@ function ConversationView({ conv }) {
             {conv.usefulVocab.map((v, i) => (
               <div key={i} style={{ padding: '6px 12px', background: '#f1f5f9', borderRadius: 6, fontSize: '0.9rem', display: 'flex', alignItems: 'center', gap: 6 }}>
                 <span style={{ fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 500 }}>{v.jp}</span>
-                <SpeakButton text={v.jp} />
+
                 <span style={{ color: '#64748b' }}> = {v.fr}</span>
               </div>
             ))}
@@ -105,7 +104,7 @@ function PhrasesView() {
               {cat.phrases.map((p, pi) => (
                 <div key={pi} className="expression-card">
                   <div>
-                    <div className="expr-jp">{p.jp} <SpeakButton text={p.jp} /></div>
+                    <div className="expr-jp">{p.jp}</div>
                     <div className="expr-rm">{p.rm}</div>
                   </div>
                   <div className="expr-fr">{p.fr}</div>

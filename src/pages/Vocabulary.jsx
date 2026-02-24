@@ -1,7 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { vocabularyCategories } from '../data/vocabulary';
 import { mnnVocabulary } from '../data/mnn-vocabulary';
-import SpeakButton from '../components/SpeakButton';
 
 export default function Vocabulary() {
   const [mode, setMode] = useState('mnn');
@@ -81,7 +80,7 @@ export default function Vocabulary() {
                   <tbody>
                     {lesson.words.map((w, i) => (
                       <tr key={i}>
-                        <td className="jp-col">{w.jp} <SpeakButton text={w.jp} /></td>
+                        <td className="jp-col">{w.jp}</td>
                         <td className="rm-col">{w.rm}</td>
                         <td>{w.fr}</td>
                         {lesson.words.some(w2 => w2.note) && (
@@ -143,7 +142,7 @@ export default function Vocabulary() {
                           )}
                         </td>
                       )}
-                      <td className="jp-col">{w.jp} <SpeakButton text={w.jp} /></td>
+                      <td className="jp-col">{w.jp}</td>
                       <td className="rm-col">{w.rm}</td>
                       <td>{w.fr}</td>
                       {cat.words.some(w2 => w2.note || w2.sound) && (

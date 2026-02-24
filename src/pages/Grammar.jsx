@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { grammarLessons } from '../data/grammar';
 import ExerciseBlock from '../components/ExerciseBlock';
-import SpeakButton from '../components/SpeakButton';
 
 export default function Grammar() {
   const [activeLesson, setActiveLesson] = useState(0);
@@ -50,7 +49,7 @@ export default function Grammar() {
                 </div>
                 {gp.examples && gp.examples.map((ex, ei) => (
                   <div key={ei} className="example-box">
-                    <div className="jp">{ex.jp} <SpeakButton text={ex.jp} /></div>
+                    <div className="jp">{ex.jp}</div>
                     <div className="rm">{ex.rm}</div>
                     <div className="fr">{ex.fr}</div>
                   </div>
@@ -76,7 +75,7 @@ export default function Grammar() {
             <h4 style={{ marginBottom: 12, fontSize: '1rem' }}>Examples</h4>
             {lesson.examples.map((ex, i) => (
               <div key={i} className="example-box">
-                <div className="jp">{ex.japanese || ex.jp} <SpeakButton text={ex.japanese || ex.jp} /></div>
+                <div className="jp">{ex.japanese || ex.jp}</div>
                 <div className="rm">{ex.romaji || ex.rm}</div>
                 <div className="fr">{ex.french || ex.fr}</div>
                 {ex.breakdown && <div className="breakdown">{ex.breakdown}</div>}
@@ -102,7 +101,7 @@ export default function Grammar() {
                 </div>
                 {p.examples.map((ex, ei) => (
                   <div key={ei} className="example-box">
-                    <div className="jp">{ex.jp} <SpeakButton text={ex.jp} /></div>
+                    <div className="jp">{ex.jp}</div>
                     <div className="rm">{ex.rm}</div>
                     <div className="fr">{ex.fr}</div>
                   </div>
@@ -355,7 +354,7 @@ export default function Grammar() {
                 <h4 style={{ color: '#dc2626', marginBottom: 10, fontSize: '0.95rem' }}>{usage.name}</h4>
                 {usage.examples.map((ex, ei) => (
                   <div key={ei} className="example-box">
-                    <div className="jp">{ex.jp} <SpeakButton text={ex.jp} /></div>
+                    <div className="jp">{ex.jp}</div>
                     <div className="rm">{ex.rm}</div>
                     <div className="fr">{ex.fr}</div>
                   </div>
@@ -375,7 +374,7 @@ export default function Grammar() {
                   {cat.expressions.map((expr, ei) => (
                     <div key={ei} className="expression-card">
                       <div>
-                        <div className="expr-jp">{expr.jp} <SpeakButton text={expr.jp} /></div>
+                        <div className="expr-jp">{expr.jp}</div>
                         <div className="expr-rm">{expr.rm}</div>
                       </div>
                       <div className="expr-fr">{expr.fr}</div>
