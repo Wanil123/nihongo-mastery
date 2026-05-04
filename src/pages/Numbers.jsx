@@ -235,10 +235,11 @@ export default function Numbers() {
                   borderRadius: 8,
                   padding: '10px 14px',
                 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <span style={{ fontWeight: 700, color: '#dc2626', fontSize: '1rem' }}>{m.num}月</span>
-                    <span style={{ fontSize: '1.15rem', fontFamily: "'Noto Sans JP', sans-serif" }}>{m.jp}</span>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
+                    <span style={{ fontWeight: 700, color: '#dc2626', fontSize: '1rem' }}>{m.kanji}</span>
+                    <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>{m.num}月</span>
                   </div>
+                  <div style={{ fontSize: '1.2rem', fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 600 }}>{m.jp}</div>
                   <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{m.rm}</div>
                   <div style={{ fontSize: '0.9rem', color: '#1e293b', marginTop: 2 }}>{m.en}</div>
                   {m.note && <div style={{ fontSize: '0.78rem', color: '#92400e', marginTop: 4 }}>⚠ {m.note}</div>}
@@ -265,8 +266,8 @@ export default function Numbers() {
                 <tbody>
                   {daysOfMonth.map((d, i) => (
                     <tr key={i} style={d.irregular ? { background: '#fefce8', fontWeight: 600 } : {}}>
-                      <td style={{ fontWeight: 700, color: '#dc2626' }}>{d.num}日</td>
-                      <td className="jp-col" style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: '1.05rem' }}>
+                      <td style={{ fontWeight: 700, color: '#dc2626' }}>{d.kanji}</td>
+                      <td className="jp-col" style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: '1.1rem' }}>
                         {d.jp}
                         {d.irregular && <span style={{ fontSize: '0.7rem', color: '#92400e', marginLeft: 6 }}>irregular</span>}
                       </td>
