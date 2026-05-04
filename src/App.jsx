@@ -10,6 +10,7 @@ import Conversations from './pages/Conversations';
 import Practice from './pages/Practice';
 import Conjugation from './pages/Conjugation';
 import Particles from './pages/Particles';
+import Numbers from './pages/Numbers';
 import './styles/App.css';
 
 const navItems = [
@@ -24,6 +25,7 @@ const navItems = [
   { path: '/conjugation', label: 'Conjugation 活用', icon: '変' },
   { path: '/particles', label: 'Particles 助詞', icon: 'は' },
   { path: '/vocabulary', label: 'Vocabulary 語彙', icon: '言' },
+  { path: '/numbers', label: 'Numbers 数字', icon: '数' },
   { section: 'Practice' },
   { path: '/conversations', label: 'Conversations 会話', icon: '話' },
 ];
@@ -125,6 +127,7 @@ export default function App() {
             <Route path="/particles" element={<Particles />} />
             <Route path="/practice" element={<Practice />} />
             <Route path="/conversations" element={<Conversations />} />
+            <Route path="/numbers" element={<Numbers />} />
           </Routes>
         </main>
       </div>
