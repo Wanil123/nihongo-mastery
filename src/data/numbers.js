@@ -264,8 +264,8 @@ export const sinoQuizQuestions = [
   { char: '3,000',  instruction: 'How do you read 3,000?',       options: ['さんぜん', 'さんせん', 'みせん', 'さんまん'],               answer: 'さんぜん' },
   { char: '8,000',  instruction: 'How do you read 8,000?',       options: ['はっせん', 'はちせん', 'はちぜん', 'はっぜん'],             answer: 'はっせん' },
   { char: '10,000', instruction: 'How do you read 10,000?',      options: ['いちまん', 'じゅうせん', 'じゅうまん', 'いちせん'],         answer: 'いちまん' },
-  { char: 'にじゅうに', instruction: 'What number is this?',     options: ['22', '12', '20', '32'],                                    answer: '22' },
-  { char: 'ごひゃく',   instruction: 'What number is this?',     options: ['500', '50', '5,000', '150'],                               answer: '500' },
+  { char: '二十二（にじゅうに）', instruction: 'What number is this?', options: ['22', '12', '20', '32'],      answer: '22' },
+  { char: '五百（ごひゃく）',     instruction: 'What number is this?', options: ['500', '50', '5,000', '150'], answer: '500' },
 ];
 
 // ─── NATIVE JAPANESE (WAGO) QUIZ ─────────────────────────────────────────────
@@ -311,8 +311,8 @@ export const dateQuizQuestions = [
   { char: '14日', instruction: 'How do you read the 14th?',          options: ['じゅうよっか', 'じゅうしにち', 'じゅうよんにち', 'じゅうしか'], answer: 'じゅうよっか' },
   { char: '20日', instruction: 'How do you read the 20th?',          options: ['はつか', 'にじゅうにち', 'にじゅうか', 'ふつか'], answer: 'はつか' },
   { char: '24日', instruction: 'How do you read the 24th?',          options: ['にじゅうよっか', 'にじゅうしにち', 'にじゅうよんにち', 'にじゅうしか'], answer: 'にじゅうよっか' },
-  { char: 'ふつか', instruction: 'Which date does ふつか refer to?', options: ['2nd', '1st', '3rd', '22nd'],                    answer: '2nd' },
-  { char: 'はつか', instruction: 'Which date does はつか refer to?', options: ['20th', '8th', '10th', '24th'],                  answer: '20th' },
+  { char: '二日（ふつか）',   instruction: 'Which date does 二日（ふつか）refer to?',   options: ['2nd', '1st', '3rd', '22nd'],   answer: '2nd' },
+  { char: '二十日（はつか）', instruction: 'Which date does 二十日（はつか）refer to?', options: ['20th', '8th', '10th', '24th'], answer: '20th' },
 ];
 
 // ─── DAYS OF WEEK QUIZ ────────────────────────────────────────────────────────
@@ -327,8 +327,8 @@ export const daysQuizQuestions = [
   { char: 'Wednesday', instruction: 'Which kanji is Wednesday?',         options: ['水曜日', '木曜日', '火曜日', '土曜日'],          answer: '水曜日' },
   { char: 'Friday',    instruction: 'Which kanji is Friday?',            options: ['金曜日', '木曜日', '月曜日', '水曜日'],          answer: '金曜日' },
   { char: 'Sunday',    instruction: 'Which kanji is Sunday?',            options: ['日曜日', '月曜日', '土曜日', '火曜日'],          answer: '日曜日' },
-  { char: 'どようび',  instruction: 'What does どようび mean?',          options: ['Saturday', 'Sunday', 'Thursday', 'Friday'],     answer: 'Saturday' },
-  { char: 'もくようび', instruction: 'What does もくようび mean?',       options: ['Thursday', 'Monday', 'Wednesday', 'Tuesday'],   answer: 'Thursday' },
+  { char: '土曜日（どようび）',  instruction: 'What day is this?', options: ['Saturday', 'Sunday', 'Thursday', 'Friday'],   answer: 'Saturday' },
+  { char: '木曜日（もくようび）', instruction: 'What day is this?', options: ['Thursday', 'Monday', 'Wednesday', 'Tuesday'], answer: 'Thursday' },
   { char: '金',        instruction: 'The element 金 (gold) represents which day?', options: ['Friday', 'Wednesday', 'Thursday', 'Saturday'], answer: 'Friday' },
   { char: '土',        instruction: 'The element 土 (earth) represents which day?', options: ['Saturday', 'Thursday', 'Sunday', 'Monday'],    answer: 'Saturday' },
 ];
