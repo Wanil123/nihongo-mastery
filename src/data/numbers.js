@@ -253,175 +253,91 @@ export const numberExercises = [
   },
 ];
 
-// ─── QUIZ QUESTIONS ───────────────────────────────────────────────────────────
+// ─── SINO-JAPANESE QUIZ ───────────────────────────────────────────────────────
+export const sinoQuizQuestions = [
+  { char: '15',     instruction: 'How do you read this number?', options: ['じゅうご', 'ごじゅう', 'いちご', 'じゅうなな'],           answer: 'じゅうご' },
+  { char: '47',     instruction: 'How do you read this number?', options: ['よんじゅうなな', 'ししちじゅう', 'ななよん', 'よんじゅうしち'], answer: 'よんじゅうなな' },
+  { char: '83',     instruction: 'How do you read this number?', options: ['はちじゅうさん', 'さんじゅうはち', 'はちさんじゅう', 'さんはちじゅう'], answer: 'はちじゅうさん' },
+  { char: '300',    instruction: 'How do you read 300?',         options: ['さんびゃく', 'さんひゃく', 'みびゃく', 'さんびゃくん'],     answer: 'さんびゃく' },
+  { char: '600',    instruction: 'How do you read 600?',         options: ['ろっぴゃく', 'ろくひゃく', 'ろくびゃく', 'むぴゃく'],       answer: 'ろっぴゃく' },
+  { char: '800',    instruction: 'How do you read 800?',         options: ['はっぴゃく', 'はちひゃく', 'はちびゃく', 'はっひゃく'],     answer: 'はっぴゃく' },
+  { char: '3,000',  instruction: 'How do you read 3,000?',       options: ['さんぜん', 'さんせん', 'みせん', 'さんまん'],               answer: 'さんぜん' },
+  { char: '8,000',  instruction: 'How do you read 8,000?',       options: ['はっせん', 'はちせん', 'はちぜん', 'はっぜん'],             answer: 'はっせん' },
+  { char: '10,000', instruction: 'How do you read 10,000?',      options: ['いちまん', 'じゅうせん', 'じゅうまん', 'いちせん'],         answer: 'いちまん' },
+  { char: 'にじゅうに', instruction: 'What number is this?',     options: ['22', '12', '20', '32'],                                    answer: '22' },
+  { char: 'ごひゃく',   instruction: 'What number is this?',     options: ['500', '50', '5,000', '150'],                               answer: '500' },
+];
+
+// ─── NATIVE JAPANESE (WAGO) QUIZ ─────────────────────────────────────────────
+export const wagoQuizQuestions = [
+  { char: 'ひとつ',   instruction: 'What number does this wago word represent?', options: ['1', '2', '3', '7'],  answer: '1' },
+  { char: 'ふたつ',   instruction: 'What number does this wago word represent?', options: ['2', '1', '4', '6'],  answer: '2' },
+  { char: 'みっつ',   instruction: 'What number does this wago word represent?', options: ['3', '6', '8', '5'],  answer: '3' },
+  { char: 'よっつ',   instruction: 'What number does this wago word represent?', options: ['4', '8', '3', '6'],  answer: '4' },
+  { char: 'いつつ',   instruction: 'What number does this wago word represent?', options: ['5', '3', '7', '9'],  answer: '5' },
+  { char: 'むっつ',   instruction: 'What number does this wago word represent?', options: ['6', '3', '9', '5'],  answer: '6' },
+  { char: 'ななつ',   instruction: 'What number does this wago word represent?', options: ['7', '2', '4', '9'],  answer: '7' },
+  { char: 'やっつ',   instruction: 'What number does this wago word represent?', options: ['8', '4', '7', '9'],  answer: '8' },
+  { char: 'ここのつ', instruction: 'What number does this wago word represent?', options: ['9', '5', '6', '10'], answer: '9' },
+  { char: 'とお',     instruction: 'What number does this wago word represent?', options: ['10', '5', '9', '8'], answer: '10' },
+  { char: '3',  instruction: 'Which wago word means "three things"?', options: ['みっつ', 'むっつ', 'やっつ', 'ふたつ'], answer: 'みっつ' },
+  { char: '6',  instruction: 'Which wago word means "six things"?',   options: ['むっつ', 'みっつ', 'ななつ', 'よっつ'], answer: 'むっつ' },
+];
+
+// ─── TIME QUIZ ────────────────────────────────────────────────────────────────
+export const timeQuizQuestions = [
+  { char: '4時',  instruction: 'How do you read this time (hours)?',     options: ['よじ', 'しじ', 'よんじ', 'しちじ'],         answer: 'よじ' },
+  { char: '9時',  instruction: 'How do you read this time (hours)?',     options: ['くじ', 'きゅうじ', 'こじ', 'ここのじ'],     answer: 'くじ' },
+  { char: '7時',  instruction: 'How do you read this time (hours)?',     options: ['しちじ', 'ななじ', 'しじ', 'なじ'],         answer: 'しちじ' },
+  { char: '1分',  instruction: 'How do you read 1 minute?',              options: ['いっぷん', 'いちふん', 'いちぷん', 'いっふん'], answer: 'いっぷん' },
+  { char: '3分',  instruction: 'How do you read 3 minutes?',             options: ['さんぷん', 'さんふん', 'みぷん', 'さんびゅん'], answer: 'さんぷん' },
+  { char: '6分',  instruction: 'How do you read 6 minutes?',             options: ['ろっぷん', 'ろくふん', 'ろくぷん', 'ろっふん'], answer: 'ろっぷん' },
+  { char: '8分',  instruction: 'How do you read 8 minutes?',             options: ['はっぷん', 'はちふん', 'はちぷん', 'はっふん'], answer: 'はっぷん' },
+  { char: '10分', instruction: 'How do you read 10 minutes?',            options: ['じっぷん', 'じゅうふん', 'じゅうぷん', 'じっふん'], answer: 'じっぷん' },
+  { char: '30分', instruction: 'Which word also means "half past"?',     options: ['はん', 'ごろ', 'まえ', 'すぎ'],             answer: 'はん' },
+  { char: '午前', instruction: 'What does 午前 mean?',                   options: ['AM (morning)', 'PM (afternoon)', 'noon', 'midnight'], answer: 'AM (morning)' },
+  { char: '午後', instruction: 'What does 午後 mean?',                   options: ['PM (afternoon)', 'AM (morning)', 'evening', 'dawn'],  answer: 'PM (afternoon)' },
+];
+
+// ─── DATES QUIZ ───────────────────────────────────────────────────────────────
+export const dateQuizQuestions = [
+  { char: '4月',  instruction: 'How do you read April?',             options: ['しがつ', 'よんがつ', 'よがつ', 'よっかがつ'],   answer: 'しがつ' },
+  { char: '7月',  instruction: 'How do you read July?',              options: ['しちがつ', 'ながつ', 'ななつき', 'なながつ'],    answer: 'しちがつ' },
+  { char: '9月',  instruction: 'How do you read September?',         options: ['くがつ', 'きゅうがつ', 'こがつ', 'ここのがつ'],  answer: 'くがつ' },
+  { char: '1日',  instruction: 'How do you read the 1st?',           options: ['ついたち', 'いちにち', 'ひとにち', 'いちか'],    answer: 'ついたち' },
+  { char: '2日',  instruction: 'How do you read the 2nd?',           options: ['ふつか', 'ににち', 'ふたか', 'にか'],            answer: 'ふつか' },
+  { char: '8日',  instruction: 'How do you read the 8th?',           options: ['ようか', 'はちにち', 'はちか', 'やか'],          answer: 'ようか' },
+  { char: '10日', instruction: 'How do you read the 10th?',          options: ['とおか', 'じゅうにち', 'じゅうか', 'じっか'],    answer: 'とおか' },
+  { char: '14日', instruction: 'How do you read the 14th?',          options: ['じゅうよっか', 'じゅうしにち', 'じゅうよんにち', 'じゅうしか'], answer: 'じゅうよっか' },
+  { char: '20日', instruction: 'How do you read the 20th?',          options: ['はつか', 'にじゅうにち', 'にじゅうか', 'ふつか'], answer: 'はつか' },
+  { char: '24日', instruction: 'How do you read the 24th?',          options: ['にじゅうよっか', 'にじゅうしにち', 'にじゅうよんにち', 'にじゅうしか'], answer: 'にじゅうよっか' },
+  { char: 'ふつか', instruction: 'Which date does ふつか refer to?', options: ['2nd', '1st', '3rd', '22nd'],                    answer: '2nd' },
+  { char: 'はつか', instruction: 'Which date does はつか refer to?', options: ['20th', '8th', '10th', '24th'],                  answer: '20th' },
+];
+
+// ─── DAYS OF WEEK QUIZ ────────────────────────────────────────────────────────
+export const daysQuizQuestions = [
+  { char: '月曜日',    instruction: 'What day is this?',                 options: ['Monday', 'Tuesday', 'Sunday', 'Saturday'],      answer: 'Monday' },
+  { char: '火曜日',    instruction: 'What day is this?',                 options: ['Tuesday', 'Monday', 'Thursday', 'Wednesday'],   answer: 'Tuesday' },
+  { char: '水曜日',    instruction: 'What day is this?',                 options: ['Wednesday', 'Saturday', 'Sunday', 'Friday'],    answer: 'Wednesday' },
+  { char: '木曜日',    instruction: 'What day is this?',                 options: ['Thursday', 'Tuesday', 'Monday', 'Friday'],      answer: 'Thursday' },
+  { char: '金曜日',    instruction: 'What day is this?',                 options: ['Friday', 'Thursday', 'Monday', 'Wednesday'],    answer: 'Friday' },
+  { char: '土曜日',    instruction: 'What day is this?',                 options: ['Saturday', 'Sunday', 'Friday', 'Monday'],       answer: 'Saturday' },
+  { char: '日曜日',    instruction: 'What day is this?',                 options: ['Sunday', 'Saturday', 'Monday', 'Tuesday'],      answer: 'Sunday' },
+  { char: 'Wednesday', instruction: 'Which kanji is Wednesday?',         options: ['水曜日', '木曜日', '火曜日', '土曜日'],          answer: '水曜日' },
+  { char: 'Friday',    instruction: 'Which kanji is Friday?',            options: ['金曜日', '木曜日', '月曜日', '水曜日'],          answer: '金曜日' },
+  { char: 'Sunday',    instruction: 'Which kanji is Sunday?',            options: ['日曜日', '月曜日', '土曜日', '火曜日'],          answer: '日曜日' },
+  { char: 'どようび',  instruction: 'What does どようび mean?',          options: ['Saturday', 'Sunday', 'Thursday', 'Friday'],     answer: 'Saturday' },
+  { char: 'もくようび', instruction: 'What does もくようび mean?',       options: ['Thursday', 'Monday', 'Wednesday', 'Tuesday'],   answer: 'Thursday' },
+  { char: '金',        instruction: 'The element 金 (gold) represents which day?', options: ['Friday', 'Wednesday', 'Thursday', 'Saturday'], answer: 'Friday' },
+  { char: '土',        instruction: 'The element 土 (earth) represents which day?', options: ['Saturday', 'Thursday', 'Sunday', 'Monday'],    answer: 'Saturday' },
+];
+
+// ─── COMBINED QUIZ (all topics) ───────────────────────────────────────────────
 export const numberQuizQuestions = [
-  // Sino-Japanese numbers
-  {
-    char: '15',
-    instruction: 'How do you read this number in Japanese?',
-    options: ['じゅうご', 'ごじゅう', 'いちご', 'じゅうなな'],
-    answer: 'じゅうご',
-  },
-  {
-    char: '47',
-    instruction: 'How do you read this number in Japanese?',
-    options: ['よんじゅうなな', 'ししちじゅう', 'ななよん', 'よんじゅうしち'],
-    answer: 'よんじゅうなな',
-  },
-  {
-    char: '300',
-    instruction: 'How do you read 300 in Japanese?',
-    options: ['さんびゃく', 'さんひゃく', 'みびゃく', 'さんびゃくん'],
-    answer: 'さんびゃく',
-  },
-  {
-    char: '600',
-    instruction: 'How do you read 600 in Japanese?',
-    options: ['ろっぴゃく', 'ろくひゃく', 'ろくびゃく', 'むぴゃく'],
-    answer: 'ろっぴゃく',
-  },
-  {
-    char: '3,000',
-    instruction: 'How do you read 3,000 in Japanese?',
-    options: ['さんぜん', 'さんせん', 'みせん', 'さんまん'],
-    answer: 'さんぜん',
-  },
-  // Native Japanese numbers
-  {
-    char: 'みっつ',
-    instruction: 'What number does this native Japanese word represent?',
-    options: ['3', '6', '8', '5'],
-    answer: '3',
-  },
-  {
-    char: 'やっつ',
-    instruction: 'What number does this native Japanese word represent?',
-    options: ['8', '4', '7', '9'],
-    answer: '8',
-  },
-  {
-    char: 'ここのつ',
-    instruction: 'What number does this native Japanese word represent?',
-    options: ['9', '5', '6', '10'],
-    answer: '9',
-  },
-  // Time — hours
-  {
-    char: '4時',
-    instruction: 'How do you read this time?',
-    options: ['よじ', 'しじ', 'よんじ', 'しちじ'],
-    answer: 'よじ',
-  },
-  {
-    char: '9時',
-    instruction: 'How do you read this time?',
-    options: ['くじ', 'きゅうじ', 'こじ', 'ここのじ'],
-    answer: 'くじ',
-  },
-  {
-    char: '7時',
-    instruction: 'How do you read this time?',
-    options: ['しちじ', 'ななじ', 'しじ', 'なじ'],
-    answer: 'しちじ',
-  },
-  // Time — minutes
-  {
-    char: '1分',
-    instruction: 'How do you read 1 minute in Japanese?',
-    options: ['いっぷん', 'いちふん', 'いちぷん', 'いっふん'],
-    answer: 'いっぷん',
-  },
-  {
-    char: '6分',
-    instruction: 'How do you read 6 minutes in Japanese?',
-    options: ['ろっぷん', 'ろくふん', 'ろくぷん', 'ろっふん'],
-    answer: 'ろっぷん',
-  },
-  {
-    char: '30分',
-    instruction: 'Which word also means 30 minutes (half past)?',
-    options: ['はん', 'ごろ', 'まえ', 'すぎ'],
-    answer: 'はん',
-  },
-  // Months
-  {
-    char: '4月',
-    instruction: 'How do you read April in Japanese?',
-    options: ['しがつ', 'よんがつ', 'よがつ', 'よっかがつ'],
-    answer: 'しがつ',
-  },
-  {
-    char: '7月',
-    instruction: 'How do you read July in Japanese?',
-    options: ['しちがつ', 'ながつ', 'ななつき', 'なながつ'],
-    answer: 'しちがつ',
-  },
-  {
-    char: '9月',
-    instruction: 'How do you read September in Japanese?',
-    options: ['くがつ', 'きゅうがつ', 'こがつ', 'ここのがつ'],
-    answer: 'くがつ',
-  },
-  // Days of month
-  {
-    char: '1日',
-    instruction: 'How do you read the 1st of the month?',
-    options: ['ついたち', 'いちにち', 'ひとにち', 'いちか'],
-    answer: 'ついたち',
-  },
-  {
-    char: '20日',
-    instruction: 'How do you read the 20th of the month?',
-    options: ['はつか', 'にじゅうにち', 'にじゅうか', 'ふつか'],
-    answer: 'はつか',
-  },
-  {
-    char: '14日',
-    instruction: 'How do you read the 14th of the month?',
-    options: ['じゅうよっか', 'じゅうしにち', 'じゅうよんにち', 'じゅうしか'],
-    answer: 'じゅうよっか',
-  },
-  {
-    char: '8日',
-    instruction: 'How do you read the 8th of the month?',
-    options: ['ようか', 'はちにち', 'はちか', 'やか'],
-    answer: 'ようか',
-  },
-  // Days of the week
-  {
-    char: '月曜日',
-    instruction: 'What day of the week is this?',
-    options: ['Monday', 'Tuesday', 'Sunday', 'Saturday'],
-    answer: 'Monday',
-  },
-  {
-    char: '金曜日',
-    instruction: 'What day of the week is this?',
-    options: ['Friday', 'Thursday', 'Monday', 'Wednesday'],
-    answer: 'Friday',
-  },
-  {
-    char: 'Wednesday',
-    instruction: 'Which kanji represents Wednesday?',
-    options: ['水曜日', '木曜日', '火曜日', '土曜日'],
-    answer: '水曜日',
-  },
-  {
-    char: 'Saturday',
-    instruction: 'Which kanji represents Saturday?',
-    options: ['土曜日', '日曜日', '金曜日', '月曜日'],
-    answer: '土曜日',
-  },
-  {
-    char: 'どようび',
-    instruction: 'What does this mean?',
-    options: ['Saturday', 'Sunday', 'Thursday', 'Friday'],
-    answer: 'Saturday',
-  },
-  {
-    char: 'にちようび',
-    instruction: 'What does this mean?',
-    options: ['Sunday', 'Monday', 'Tuesday', 'Saturday'],
-    answer: 'Sunday',
-  },
+  ...sinoQuizQuestions,
+  ...wagoQuizQuestions,
+  ...timeQuizQuestions,
+  ...dateQuizQuestions,
+  ...daysQuizQuestions,
 ];

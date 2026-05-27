@@ -14,9 +14,39 @@ import {
   weekExamples,
   numberExercises,
   numberQuizQuestions,
+  sinoQuizQuestions,
+  wagoQuizQuestions,
+  timeQuizQuestions,
+  dateQuizQuestions,
+  daysQuizQuestions,
 } from '../data/numbers';
 
 const tabs = ['数字 Numbers', '時間 Time', '日付 Dates', '曜日 Days', '練習 Exercises', 'クイズ Quiz'];
+
+function SectionQuiz({ questions, title }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div style={{ marginBottom: 24 }}>
+      <button
+        onClick={() => setOpen(o => !o)}
+        style={{
+          width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+          background: open ? '#fef2f2' : '#f8fafc', border: '2px solid #dc2626',
+          borderRadius: 10, padding: '12px 18px', cursor: 'pointer', fontWeight: 700,
+          fontSize: '0.95rem', color: '#dc2626', transition: 'background 0.2s',
+        }}
+      >
+        <span>🎯 {title}</span>
+        <span style={{ fontSize: '1.2rem' }}>{open ? '▲' : '▼'}</span>
+      </button>
+      {open && (
+        <div style={{ border: '2px solid #dc2626', borderTop: 'none', borderRadius: '0 0 10px 10px', padding: 16, background: '#fff' }}>
+          <Quiz questions={questions} title={title} />
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function Numbers() {
   const [activeTab, setActiveTab] = useState(0);
@@ -67,7 +97,7 @@ export default function Numbers() {
               Used for counting, telling time, dates, phone numbers, prices, and most everyday situations.
               Numbers are built by combining tens, hundreds, and thousands.
             </p>
-            <div style={{ overflowX: 'auto' }}>
+            <div style={{ overflowX: 'auto', marginBottom: 16 }}>
               <table className="vocab-table">
                 <thead>
                   <tr>
@@ -91,7 +121,11 @@ export default function Numbers() {
                 </tbody>
               </table>
             </div>
-            <div style={{ marginTop: 16, padding: '12px 16px', background: '#fef2f2', borderRadius: 8, borderLeft: '4px solid #dc2626' }}>
+
+            {/* ─ Sino Quiz ─ */}
+            <SectionQuiz questions={sinoQuizQuestions} title="Sino-Japanese Numbers Quiz" />
+
+            <div style={{ padding: '12px 16px', background: '#fef2f2', borderRadius: 8, borderLeft: '4px solid #dc2626' }}>
               <strong style={{ display: 'block', marginBottom: 6 }}>Building larger numbers</strong>
               <p style={{ fontSize: '0.9rem', margin: 0, color: '#475569' }}>
                 Pattern: [tens] + じゅう + [ones] &nbsp;|&nbsp; [hundreds] + ひゃく + ... &nbsp;|&nbsp; [thousands] + せん + ...<br />
@@ -110,7 +144,7 @@ export default function Numbers() {
               Used for counting general objects (without a counter), and for abstract quantities up to 10.
               Above 10, Sino-Japanese numbers take over.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 10 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: 10, marginBottom: 16 }}>
               {nativeJapaneseNumbers.map((n, i) => (
                 <div key={i} style={{ background: '#f8fafc', border: '1px solid #e2e8f0', borderRadius: 8, padding: '10px 14px' }}>
                   <div style={{ fontSize: '1.5rem', fontWeight: 700, color: '#dc2626', fontFamily: "'Noto Sans JP', sans-serif" }}>{n.jp}</div>
@@ -119,7 +153,11 @@ export default function Numbers() {
                 </div>
               ))}
             </div>
-            <div style={{ marginTop: 16, padding: '12px 16px', background: '#f0fdf4', borderRadius: 8, borderLeft: '4px solid #16a34a' }}>
+
+            {/* ─ Wago Quiz ─ */}
+            <SectionQuiz questions={wagoQuizQuestions} title="Native Japanese (Wago) Numbers Quiz" />
+
+            <div style={{ padding: '12px 16px', background: '#f0fdf4', borderRadius: 8, borderLeft: '4px solid #16a34a' }}>
               <strong>Usage example</strong>
               <div className="particle-example" style={{ marginTop: 8 }}>
                 <div className="jp">りんごをみっつください。</div>
@@ -172,7 +210,7 @@ export default function Numbers() {
             <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: 16 }}>
               Minutes use ふん (fun) or ぷん (pun) depending on the preceding number. 1, 3, 4, 6, 8, 10 trigger sound changes.
             </p>
-            <div style={{ overflowX: 'auto' }}>
+            <div style={{ overflowX: 'auto', marginBottom: 16 }}>
               <table className="vocab-table">
                 <thead>
                   <tr><th>Minutes</th><th>Japanese</th><th>Romaji</th><th>English</th><th>Note</th></tr>
@@ -191,6 +229,9 @@ export default function Numbers() {
               </table>
             </div>
           </div>
+
+          {/* ─ Time Quiz ─ */}
+          <SectionQuiz questions={timeQuizQuestions} title="Time Readings Quiz" />
 
           {/* Time expressions */}
           <div className="card">
@@ -232,8 +273,7 @@ export default function Numbers() {
                 <div key={i} style={{
                   background: m.note ? '#fefce8' : '#f8fafc',
                   border: `1px solid ${m.note ? '#fde68a' : '#e2e8f0'}`,
-                  borderRadius: 8,
-                  padding: '10px 14px',
+                  borderRadius: 8, padding: '10px 14px',
                 }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
                     <span style={{ fontWeight: 700, color: '#dc2626', fontSize: '1rem' }}>{m.kanji}</span>
@@ -258,10 +298,10 @@ export default function Numbers() {
               Days 1–10, 14, 20, and 24 have <strong>irregular native Japanese readings</strong>. All others use [number] + にち (nichi).
               Highlighted rows are irregular.
             </p>
-            <div style={{ overflowX: 'auto' }}>
+            <div style={{ overflowX: 'auto', marginBottom: 16 }}>
               <table className="vocab-table">
                 <thead>
-                  <tr><th>Day</th><th>Japanese</th><th>Romaji</th><th>English</th></tr>
+                  <tr><th>Day</th><th>Reading</th><th>Romaji</th><th>English</th></tr>
                 </thead>
                 <tbody>
                   {daysOfMonth.map((d, i) => (
@@ -279,6 +319,9 @@ export default function Numbers() {
               </table>
             </div>
           </div>
+
+          {/* ─ Dates Quiz ─ */}
+          <SectionQuiz questions={dateQuizQuestions} title="Dates Quiz (Months & Days)" />
 
           {/* Date expressions */}
           <div className="card">
@@ -312,19 +355,13 @@ export default function Numbers() {
             </div>
             <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: 16 }}>
               Each day is named after a natural element. Add 曜日 (ようび, yōbi) to the element kanji.
-              The elements follow the ancient East Asian cosmological order.
             </p>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12 }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))', gap: 12, marginBottom: 16 }}>
               {daysOfWeek.map((d, i) => {
-                const colors = ['#dbeafe','#fee2e2','#cffafe','#dcfce7','#fef9c3','#fde8d8','#fce7f3'];
+                const colors  = ['#dbeafe','#fee2e2','#cffafe','#dcfce7','#fef9c3','#fde8d8','#fce7f3'];
                 const borders = ['#93c5fd','#fca5a5','#67e8f9','#86efac','#fde047','#fdba74','#f9a8d4'];
                 return (
-                  <div key={i} style={{
-                    background: colors[i],
-                    border: `2px solid ${borders[i]}`,
-                    borderRadius: 10,
-                    padding: '14px 16px',
-                  }}>
+                  <div key={i} style={{ background: colors[i], border: `2px solid ${borders[i]}`, borderRadius: 10, padding: '14px 16px' }}>
                     <div style={{ fontSize: '1.5rem', fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 700 }}>{d.kanji}</div>
                     <div style={{ fontSize: '1.1rem', fontFamily: "'Noto Sans JP', sans-serif", marginTop: 4 }}>{d.jp}</div>
                     <div style={{ fontSize: '0.85rem', color: '#475569' }}>{d.rm}</div>
@@ -335,6 +372,9 @@ export default function Numbers() {
               })}
             </div>
           </div>
+
+          {/* ─ Days Quiz ─ */}
+          <SectionQuiz questions={daysQuizQuestions} title="Days of the Week Quiz" />
 
           <div className="card">
             <div className="card-header">
@@ -391,14 +431,14 @@ export default function Numbers() {
       {activeTab === 5 && (
         <div className="card">
           <div className="card-header">
-            <h3>Numbers Quiz</h3>
+            <h3>Full Numbers Quiz</h3>
             <span className="badge">クイズ</span>
           </div>
           <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: 16 }}>
-            {numberQuizQuestions.length} questions covering numbers, time, dates, and days of the week.
-            Wrong answers will reappear until you get them right!
+            {numberQuizQuestions.length} questions covering all topics: numbers, time, dates, and days.
+            Wrong answers reappear until you get them right!
           </p>
-          <Quiz questions={numberQuizQuestions} title="数字・時間・日付 Quiz" />
+          <Quiz questions={numberQuizQuestions} title="数字・時間・日付・曜日 Full Quiz" />
         </div>
       )}
     </div>

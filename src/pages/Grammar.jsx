@@ -1,20 +1,181 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { grammarLessons } from '../data/grammar';
+import { jlptGrammar } from '../data/jlpt-grammar';
 import ExerciseBlock from '../components/ExerciseBlock';
 
+const LEVEL_COLORS = { N5: '#16a34a', N4: '#2563eb', N3: '#dc2626' };
+const LEVEL_BG    = { N5: '#f0fdf4', N4: '#eff6ff', N3: '#fef2f2' };
+const LEVEL_BORDER= { N5: '#86efac', N4: '#93c5fd', N3: '#fca5a5' };
+
+function JlptSection() {
+  const [search, setSearch]   = useState('');
+  const [level, setLevel]     = useState('All');
+  const [expanded, setExpanded] = useState(null);
+
+  const filtered = useMemo(() => {
+    const q = search.toLowerCase();
+    return jlptGrammar.filter(g => {
+      const matchLevel = level === 'All' || g.level === level;
+      const matchSearch = !q ||
+        g.pattern.toLowerCase().includes(q) ||
+        g.meaning.toLowerCase().includes(q) ||
+        g.explanation.toLowerCase().includes(q) ||
+        g.examples.some(ex => ex.jp.includes(q) || ex.en.toLowerCase().includes(q));
+      return matchLevel && matchSearch;
+    });
+  }, [search, level]);
+
+  return (
+    <div>
+      {/* Search + Level filter */}
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginBottom: 20, alignItems: 'center' }}>
+        <input
+          type="text"
+          placeholder="Search grammar points..."
+          value={search}
+          onChange={e => setSearch(e.target.value)}
+          style={{
+            flex: 1, minWidth: 200, padding: '10px 14px', borderRadius: 8,
+            border: '2px solid #e2e8f0', fontSize: '0.95rem', outline: 'none',
+            fontFamily: 'inherit',
+          }}
+          onFocus={e => e.target.style.borderColor = '#dc2626'}
+          onBlur={e => e.target.style.borderColor = '#e2e8f0'}
+        />
+        {['All', 'N5', 'N4', 'N3'].map(l => (
+          <button
+            key={l}
+            onClick={() => setLevel(l)}
+            style={{
+              padding: '8px 18px', borderRadius: 8, fontWeight: 700, fontSize: '0.9rem',
+              border: `2px solid ${l === 'All' ? '#64748b' : LEVEL_COLORS[l] || '#64748b'}`,
+              background: level === l ? (l === 'All' ? '#64748b' : LEVEL_COLORS[l]) : '#fff',
+              color: level === l ? '#fff' : (l === 'All' ? '#64748b' : LEVEL_COLORS[l]),
+              cursor: 'pointer', transition: 'all 0.15s',
+            }}
+          >
+            {l}
+          </button>
+        ))}
+      </div>
+
+      <div style={{ fontSize: '0.85rem', color: '#94a3b8', marginBottom: 14 }}>
+        {filtered.length} grammar point{filtered.length !== 1 ? 's' : ''} found
+      </div>
+
+      {filtered.length === 0 && (
+        <div style={{ textAlign: 'center', padding: 40, color: '#94a3b8' }}>
+          No grammar points match your search.
+        </div>
+      )}
+
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+        {filtered.map(g => {
+          const isOpen = expanded === g.id;
+          return (
+            <div
+              key={g.id}
+              style={{
+                border: `2px solid ${isOpen ? LEVEL_COLORS[g.level] : LEVEL_BORDER[g.level]}`,
+                borderRadius: 10, overflow: 'hidden',
+                background: isOpen ? LEVEL_BG[g.level] : '#fff',
+                transition: 'all 0.15s',
+              }}
+            >
+              {/* Header row — always visible */}
+              <button
+                onClick={() => setExpanded(isOpen ? null : g.id)}
+                style={{
+                  width: '100%', display: 'flex', alignItems: 'center', gap: 12,
+                  padding: '12px 16px', background: 'transparent', border: 'none',
+                  cursor: 'pointer', textAlign: 'left',
+                }}
+              >
+                <span style={{
+                  background: LEVEL_COLORS[g.level], color: '#fff',
+                  borderRadius: 6, padding: '2px 8px', fontSize: '0.75rem', fontWeight: 700, flexShrink: 0,
+                }}>{g.level}</span>
+                <span style={{
+                  fontFamily: "'Noto Sans JP', sans-serif", fontSize: '1.05rem', fontWeight: 700, color: '#1e293b', flex: 1,
+                }}>{g.pattern}</span>
+                <span style={{ fontSize: '0.85rem', color: '#64748b', flexShrink: 0 }}>{g.meaning}</span>
+                <span style={{ color: LEVEL_COLORS[g.level], fontSize: '1rem', flexShrink: 0 }}>{isOpen ? '▲' : '▼'}</span>
+              </button>
+
+              {/* Expanded content */}
+              {isOpen && (
+                <div style={{ padding: '0 16px 16px' }}>
+                  {g.structure && (
+                    <div style={{ background: '#f8fafc', borderRadius: 6, padding: '6px 12px', marginBottom: 10, fontSize: '0.88rem', color: '#475569', fontFamily: 'monospace' }}>
+                      Structure: {g.structure}
+                    </div>
+                  )}
+                  <p style={{ fontSize: '0.9rem', color: '#475569', marginBottom: 14, whiteSpace: 'pre-line' }}>{g.explanation}</p>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+                    {g.examples.map((ex, i) => (
+                      <div key={i} style={{ background: '#fff', border: `1px solid ${LEVEL_BORDER[g.level]}`, borderRadius: 8, padding: '10px 14px' }}>
+                        <div style={{ fontFamily: "'Noto Sans JP', sans-serif", fontSize: '1rem', marginBottom: 2 }}>{ex.jp}</div>
+                        <div style={{ fontSize: '0.82rem', color: '#94a3b8', marginBottom: 2 }}>{ex.rm}</div>
+                        <div style={{ fontSize: '0.88rem', color: '#475569' }}>{ex.en}</div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 export default function Grammar() {
+  const [mode, setMode]           = useState('mnn');
   const [activeLesson, setActiveLesson] = useState(0);
   const lesson = grammarLessons[activeLesson];
 
-  useEffect(() => { window.scrollTo(0, 0); }, [activeLesson]);
+  useEffect(() => { window.scrollTo(0, 0); }, [activeLesson, mode]);
 
   return (
     <div>
       <div className="page-header">
         <h2>文法 Grammar</h2>
-        <p className="subtitle">Based on Minna no Nihongo — 25 lessons from beginner to intermediate</p>
+        <p className="subtitle">Minna no Nihongo lessons + JLPT N5 / N4 / N3 grammar reference</p>
       </div>
 
+      {/* Top mode switcher */}
+      <div style={{ display: 'flex', gap: 10, marginBottom: 24 }}>
+        <button
+          onClick={() => setMode('mnn')}
+          style={{
+            padding: '10px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer',
+            border: '2px solid #dc2626',
+            background: mode === 'mnn' ? '#dc2626' : '#fff',
+            color: mode === 'mnn' ? '#fff' : '#dc2626',
+          }}
+        >
+          MNN Lessons (1–25)
+        </button>
+        <button
+          onClick={() => setMode('jlpt')}
+          style={{
+            padding: '10px 22px', borderRadius: 8, fontWeight: 700, fontSize: '0.95rem', cursor: 'pointer',
+            border: '2px solid #1e293b',
+            background: mode === 'jlpt' ? '#1e293b' : '#fff',
+            color: mode === 'jlpt' ? '#fff' : '#1e293b',
+          }}
+        >
+          JLPT Grammar (N5 · N4 · N3)
+        </button>
+      </div>
+
+      {/* ── JLPT MODE ────────────────────────────────────────────────────── */}
+      {mode === 'jlpt' && <JlptSection />}
+
+      {/* ── MNN MODE ─────────────────────────────────────────────────────── */}
+      {mode === 'mnn' && (
+      <div>
       <div className="lesson-nav">
         {grammarLessons.map((l, i) => (
           <button
@@ -390,6 +551,8 @@ export default function Grammar() {
         {/* Exercises */}
         {lesson.exercises && <ExerciseBlock exercises={lesson.exercises} />}
       </div>
+    </div>
+      )}
     </div>
   );
 }
