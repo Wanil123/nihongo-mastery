@@ -317,13 +317,13 @@ export const dateQuizQuestions = [
 
 // ─── DAYS OF WEEK QUIZ ────────────────────────────────────────────────────────
 export const daysQuizQuestions = [
-  { char: '月曜日',    instruction: 'What day is this?',                 options: ['Monday', 'Tuesday', 'Sunday', 'Saturday'],      answer: 'Monday' },
-  { char: '火曜日',    instruction: 'What day is this?',                 options: ['Tuesday', 'Monday', 'Thursday', 'Wednesday'],   answer: 'Tuesday' },
-  { char: '水曜日',    instruction: 'What day is this?',                 options: ['Wednesday', 'Saturday', 'Sunday', 'Friday'],    answer: 'Wednesday' },
-  { char: '木曜日',    instruction: 'What day is this?',                 options: ['Thursday', 'Tuesday', 'Monday', 'Friday'],      answer: 'Thursday' },
-  { char: '金曜日',    instruction: 'What day is this?',                 options: ['Friday', 'Thursday', 'Monday', 'Wednesday'],    answer: 'Friday' },
-  { char: '土曜日',    instruction: 'What day is this?',                 options: ['Saturday', 'Sunday', 'Friday', 'Monday'],       answer: 'Saturday' },
-  { char: '日曜日',    instruction: 'What day is this?',                 options: ['Sunday', 'Saturday', 'Monday', 'Tuesday'],      answer: 'Sunday' },
+  { char: '月曜日（げつようび）', instruction: 'What day is this?', options: ['Monday', 'Tuesday', 'Sunday', 'Saturday'],    answer: 'Monday' },
+  { char: '火曜日（かようび）',   instruction: 'What day is this?', options: ['Tuesday', 'Monday', 'Thursday', 'Wednesday'], answer: 'Tuesday' },
+  { char: '水曜日（すいようび）', instruction: 'What day is this?', options: ['Wednesday', 'Saturday', 'Sunday', 'Friday'],  answer: 'Wednesday' },
+  { char: '木曜日（もくようび）', instruction: 'What day is this?', options: ['Thursday', 'Tuesday', 'Monday', 'Friday'],    answer: 'Thursday' },
+  { char: '金曜日（きんようび）', instruction: 'What day is this?', options: ['Friday', 'Thursday', 'Monday', 'Wednesday'],  answer: 'Friday' },
+  { char: '土曜日（どようび）',   instruction: 'What day is this?', options: ['Saturday', 'Sunday', 'Friday', 'Monday'],     answer: 'Saturday' },
+  { char: '日曜日（にちようび）', instruction: 'What day is this?', options: ['Sunday', 'Saturday', 'Monday', 'Tuesday'],    answer: 'Sunday' },
   { char: 'Wednesday', instruction: 'Which kanji is Wednesday?',         options: ['水曜日', '木曜日', '火曜日', '土曜日'],          answer: '水曜日' },
   { char: 'Friday',    instruction: 'Which kanji is Friday?',            options: ['金曜日', '木曜日', '月曜日', '水曜日'],          answer: '金曜日' },
   { char: 'Sunday',    instruction: 'Which kanji is Sunday?',            options: ['日曜日', '月曜日', '土曜日', '火曜日'],          answer: '日曜日' },
