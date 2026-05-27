@@ -286,31 +286,31 @@ export const wagoQuizQuestions = [
 
 // ─── TIME QUIZ ────────────────────────────────────────────────────────────────
 export const timeQuizQuestions = [
-  { char: '4時',  instruction: 'How do you read this time (hours)?',     options: ['よじ', 'しじ', 'よんじ', 'しちじ'],         answer: 'よじ' },
-  { char: '9時',  instruction: 'How do you read this time (hours)?',     options: ['くじ', 'きゅうじ', 'こじ', 'ここのじ'],     answer: 'くじ' },
-  { char: '7時',  instruction: 'How do you read this time (hours)?',     options: ['しちじ', 'ななじ', 'しじ', 'なじ'],         answer: 'しちじ' },
-  { char: '1分',  instruction: 'How do you read 1 minute?',              options: ['いっぷん', 'いちふん', 'いちぷん', 'いっふん'], answer: 'いっぷん' },
-  { char: '3分',  instruction: 'How do you read 3 minutes?',             options: ['さんぷん', 'さんふん', 'みぷん', 'さんびゅん'], answer: 'さんぷん' },
-  { char: '6分',  instruction: 'How do you read 6 minutes?',             options: ['ろっぷん', 'ろくふん', 'ろくぷん', 'ろっふん'], answer: 'ろっぷん' },
-  { char: '8分',  instruction: 'How do you read 8 minutes?',             options: ['はっぷん', 'はちふん', 'はちぷん', 'はっふん'], answer: 'はっぷん' },
-  { char: '10分', instruction: 'How do you read 10 minutes?',            options: ['じゅっぷん', 'じゅうふん', 'じゅうぷん', 'じっふん'], answer: 'じゅっぷん' },
-  { char: '30分', instruction: 'Which word also means "half past"?',     options: ['はん', 'ごろ', 'まえ', 'すぎ'],             answer: 'はん' },
-  { char: '午前', instruction: 'What does 午前 mean?',                   options: ['AM (morning)', 'PM (afternoon)', 'noon', 'midnight'], answer: 'AM (morning)' },
-  { char: '午後', instruction: 'What does 午後 mean?',                   options: ['PM (afternoon)', 'AM (morning)', 'evening', 'dawn'],  answer: 'PM (afternoon)' },
+  { char: '4時（よじ）',        instruction: 'How do you read this time (hours)?', options: ['よじ', 'しじ', 'よんじ', 'しちじ'],              answer: 'よじ' },
+  { char: '9時（くじ）',        instruction: 'How do you read this time (hours)?', options: ['くじ', 'きゅうじ', 'こじ', 'ここのじ'],          answer: 'くじ' },
+  { char: '7時（しちじ）',      instruction: 'How do you read this time (hours)?', options: ['しちじ', 'ななじ', 'しじ', 'なじ'],              answer: 'しちじ' },
+  { char: '1分（いっぷん）',    instruction: 'How do you read 1 minute?',           options: ['いっぷん', 'いちふん', 'いちぷん', 'いっふん'],  answer: 'いっぷん' },
+  { char: '3分（さんぷん）',    instruction: 'How do you read 3 minutes?',          options: ['さんぷん', 'さんふん', 'みぷん', 'さんびゅん'],  answer: 'さんぷん' },
+  { char: '6分（ろっぷん）',    instruction: 'How do you read 6 minutes?',          options: ['ろっぷん', 'ろくふん', 'ろくぷん', 'ろっふん'],  answer: 'ろっぷん' },
+  { char: '8分（はっぷん）',    instruction: 'How do you read 8 minutes?',          options: ['はっぷん', 'はちふん', 'はちぷん', 'はっふん'],  answer: 'はっぷん' },
+  { char: '10分（じゅっぷん）', instruction: 'How do you read 10 minutes?',         options: ['じゅっぷん', 'じゅうふん', 'じゅうぷん', 'じっふん'], answer: 'じゅっぷん' },
+  { char: '30分（さんじゅっぷん）', instruction: 'Which word also means "half past"?', options: ['はん', 'ごろ', 'まえ', 'すぎ'],            answer: 'はん' },
+  { char: '午前（ごぜん）',     instruction: 'What does 午前（ごぜん）mean?',        options: ['AM (morning)', 'PM (afternoon)', 'noon', 'midnight'], answer: 'AM (morning)' },
+  { char: '午後（ごご）',       instruction: 'What does 午後（ごご）mean?',          options: ['PM (afternoon)', 'AM (morning)', 'evening', 'dawn'],  answer: 'PM (afternoon)' },
 ];
 
 // ─── DATES QUIZ ───────────────────────────────────────────────────────────────
 export const dateQuizQuestions = [
-  { char: '4月',  instruction: 'How do you read April?',             options: ['しがつ', 'よんがつ', 'よがつ', 'よっかがつ'],   answer: 'しがつ' },
-  { char: '7月',  instruction: 'How do you read July?',              options: ['しちがつ', 'ながつ', 'ななつき', 'なながつ'],    answer: 'しちがつ' },
-  { char: '9月',  instruction: 'How do you read September?',         options: ['くがつ', 'きゅうがつ', 'こがつ', 'ここのがつ'],  answer: 'くがつ' },
-  { char: '1日',  instruction: 'How do you read the 1st?',           options: ['ついたち', 'いちにち', 'ひとにち', 'いちか'],    answer: 'ついたち' },
-  { char: '2日',  instruction: 'How do you read the 2nd?',           options: ['ふつか', 'ににち', 'ふたか', 'にか'],            answer: 'ふつか' },
-  { char: '8日',  instruction: 'How do you read the 8th?',           options: ['ようか', 'はちにち', 'はちか', 'やか'],          answer: 'ようか' },
-  { char: '10日', instruction: 'How do you read the 10th?',          options: ['とおか', 'じゅうにち', 'じゅうか', 'じっか'],    answer: 'とおか' },
-  { char: '14日', instruction: 'How do you read the 14th?',          options: ['じゅうよっか', 'じゅうしにち', 'じゅうよんにち', 'じゅうしか'], answer: 'じゅうよっか' },
-  { char: '20日', instruction: 'How do you read the 20th?',          options: ['はつか', 'にじゅうにち', 'にじゅうか', 'ふつか'], answer: 'はつか' },
-  { char: '24日', instruction: 'How do you read the 24th?',          options: ['にじゅうよっか', 'にじゅうしにち', 'にじゅうよんにち', 'にじゅうしか'], answer: 'にじゅうよっか' },
+  { char: '4月（しがつ）',         instruction: 'How do you read April?',      options: ['しがつ', 'よんがつ', 'よがつ', 'よっかがつ'],   answer: 'しがつ' },
+  { char: '7月（しちがつ）',       instruction: 'How do you read July?',       options: ['しちがつ', 'ながつ', 'ななつき', 'なながつ'],    answer: 'しちがつ' },
+  { char: '9月（くがつ）',         instruction: 'How do you read September?',  options: ['くがつ', 'きゅうがつ', 'こがつ', 'ここのがつ'],  answer: 'くがつ' },
+  { char: '1日（ついたち）',       instruction: 'How do you read the 1st?',    options: ['ついたち', 'いちにち', 'ひとにち', 'いちか'],    answer: 'ついたち' },
+  { char: '2日（ふつか）',         instruction: 'How do you read the 2nd?',    options: ['ふつか', 'ににち', 'ふたか', 'にか'],            answer: 'ふつか' },
+  { char: '8日（ようか）',         instruction: 'How do you read the 8th?',    options: ['ようか', 'はちにち', 'はちか', 'やか'],          answer: 'ようか' },
+  { char: '10日（とおか）',        instruction: 'How do you read the 10th?',   options: ['とおか', 'じゅうにち', 'じゅうか', 'じっか'],    answer: 'とおか' },
+  { char: '14日（じゅうよっか）',  instruction: 'How do you read the 14th?',   options: ['じゅうよっか', 'じゅうしにち', 'じゅうよんにち', 'じゅうしか'], answer: 'じゅうよっか' },
+  { char: '20日（はつか）',        instruction: 'How do you read the 20th?',   options: ['はつか', 'にじゅうにち', 'にじゅうか', 'ふつか'], answer: 'はつか' },
+  { char: '24日（にじゅうよっか）', instruction: 'How do you read the 24th?',  options: ['にじゅうよっか', 'にじゅうしにち', 'にじゅうよんにち', 'にじゅうしか'], answer: 'にじゅうよっか' },
   { char: '二日（ふつか）',   instruction: 'Which date does 二日（ふつか）refer to?',   options: ['2nd', '1st', '3rd', '22nd'],   answer: '2nd' },
   { char: '二十日（はつか）', instruction: 'Which date does 二十日（はつか）refer to?', options: ['20th', '8th', '10th', '24th'], answer: '20th' },
 ];
@@ -329,8 +329,8 @@ export const daysQuizQuestions = [
   { char: 'Sunday',    instruction: 'Which kanji is Sunday?',            options: ['日曜日', '月曜日', '土曜日', '火曜日'],          answer: '日曜日' },
   { char: '土曜日（どようび）',  instruction: 'What day is this?', options: ['Saturday', 'Sunday', 'Thursday', 'Friday'],   answer: 'Saturday' },
   { char: '木曜日（もくようび）', instruction: 'What day is this?', options: ['Thursday', 'Monday', 'Wednesday', 'Tuesday'], answer: 'Thursday' },
-  { char: '金',        instruction: 'The element 金 (gold) represents which day?', options: ['Friday', 'Wednesday', 'Thursday', 'Saturday'], answer: 'Friday' },
-  { char: '土',        instruction: 'The element 土 (earth) represents which day?', options: ['Saturday', 'Thursday', 'Sunday', 'Monday'],    answer: 'Saturday' },
+  { char: '金（きん）', instruction: 'The element 金（きん）gold represents which day?',  options: ['Friday', 'Wednesday', 'Thursday', 'Saturday'], answer: 'Friday' },
+  { char: '土（つち）', instruction: 'The element 土（つち）earth represents which day?', options: ['Saturday', 'Thursday', 'Sunday', 'Monday'],    answer: 'Saturday' },
 ];
 
 // ─── COMBINED QUIZ (all topics) ───────────────────────────────────────────────
