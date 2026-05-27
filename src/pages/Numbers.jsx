@@ -275,11 +275,11 @@ export default function Numbers() {
                   border: `1px solid ${m.note ? '#fde68a' : '#e2e8f0'}`,
                   borderRadius: 8, padding: '10px 14px',
                 }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 2 }}>
-                    <span style={{ fontWeight: 700, color: '#dc2626', fontSize: '1rem' }}>{m.kanji}</span>
-                    <span style={{ fontSize: '0.85rem', color: '#94a3b8' }}>{m.num}月</span>
+                  <div style={{ fontSize: '0.78rem', color: '#94a3b8', marginBottom: 2 }}>{m.num}月</div>
+                  <div style={{ fontSize: '1.1rem', fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 700, marginBottom: 2 }}>
+                    <span style={{ color: '#dc2626' }}>{m.kanji}</span>
+                    <span style={{ color: '#475569', fontWeight: 400 }}>（{m.jp}）</span>
                   </div>
-                  <div style={{ fontSize: '1.2rem', fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 600 }}>{m.jp}</div>
                   <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{m.rm}</div>
                   <div style={{ fontSize: '0.9rem', color: '#1e293b', marginTop: 2 }}>{m.en}</div>
                   {m.note && <div style={{ fontSize: '0.78rem', color: '#92400e', marginTop: 4 }}>⚠ {m.note}</div>}
@@ -362,9 +362,11 @@ export default function Numbers() {
                 const borders = ['#93c5fd','#fca5a5','#67e8f9','#86efac','#fde047','#fdba74','#f9a8d4'];
                 return (
                   <div key={i} style={{ background: colors[i], border: `2px solid ${borders[i]}`, borderRadius: 10, padding: '14px 16px' }}>
-                    <div style={{ fontSize: '1.5rem', fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 700 }}>{d.kanji}</div>
-                    <div style={{ fontSize: '1.1rem', fontFamily: "'Noto Sans JP', sans-serif", marginTop: 4 }}>{d.jp}</div>
-                    <div style={{ fontSize: '0.85rem', color: '#475569' }}>{d.rm}</div>
+                    <div style={{ fontSize: '1.2rem', fontFamily: "'Noto Sans JP', sans-serif", fontWeight: 700, marginBottom: 2 }}>
+                      <span>{d.kanji}</span>
+                      <span style={{ fontWeight: 400, color: '#475569' }}>（{d.jp}）</span>
+                    </div>
+                    <div style={{ fontSize: '0.85rem', color: '#64748b' }}>{d.rm}</div>
                     <div style={{ fontSize: '0.95rem', fontWeight: 600, marginTop: 6 }}>{d.en}</div>
                     <div style={{ fontSize: '0.8rem', color: '#64748b', marginTop: 2 }}>{d.element}</div>
                   </div>
